@@ -2,12 +2,12 @@
   "name": "vscode-aws-lambda-swift",
   "displayName": "VSCode AWS Lambda Swift",
   "publisher": "MarwaneKoutar",
-  "description": "vscode-aws-lambda-swift is a powerful Visual Studio Code extension designed to streamline the development and deployment of AWS Lambda functions using the Swift programming language. With this extension, developers can create, test, deploy, and manage Lambda functions directly from within their VS Code environment.",
+  "description": "vscode-aws-lambda-swift is a VS Code extension for developing and deploying AWS Lambda functions in Swift. It allows you to create, test, deploy, and manage Lambda functions directly within VS Code.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MarwaneKoutar/vscode-aws-lambda-swift"
+    "url": "https://github.com/swift-server-community/vscode-aws-lambda-swift-sam"
   },
-  "version": "1.1.7",
+  "version": "1.1.8",
   "workspaces": [
     "packages/*"
   ],
@@ -67,7 +67,7 @@
       "description": "Compatible with VS Code"
     },
     {
-      "href": "https://github.com/MarwaneKoutar/vscode-aws-lambda-swift",
+      "href": "https://github.com/swift-server-community/vscode-aws-lambda-swift-sam",
       "url": "https://img.shields.io/badge/Open%20Source-Yes-green.svg",
       "description": "Open Source"
     }
