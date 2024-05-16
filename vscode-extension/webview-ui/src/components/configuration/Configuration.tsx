@@ -32,28 +32,35 @@ const Configuration = () => {
   // Hooks for translation and context
   const [t] = useTranslation("global");
   const { configuration, setConfiguration } = useContext(ConfigurationContext);
-  const [error, setError] = useState("");
+  const [errorFolder, setErrorFolder] = useState("");
+  const [errorName, setErrorName] = useState("");
 
-  const checkFolderExists = (folderPath: string) => {
-    if (folderPath) {
+  const checkExists = (path: string, type: string) => {
+    if (path) {
       vscode.postMessage({
-        command: "checkFolderExists",
+        command: "checkExists",
         data: {
-          folderPath,
+          path,
+          type,
         },
       });
     } else {
-      setError(t("configuration.error.emptyPath"));
+      if (type === "folder") setErrorFolder(t("configuration.error.emptyPath"));
+      else if (type === "name")
+        setErrorName(t("configuration.error.emptyName"));
     }
   };
 
   useEffect(() => {
     const listener = (event: any) => {
-      if (event.data.command === "folderCheckResult") {
-        if (!event.data.data.exists) {
-          setError(t("configuration.error.folderDoesNotExist"));
-        } else {
-          setError("");
+      if (event.data.command === "checkResult") {
+        const { exists, type } = event.data.data;
+        if (type === "folder") {
+          setErrorFolder(
+            exists ? "" : t("configuration.error.folderDoesNotExist"),
+          );
+        } else if (type === "name") {
+          setErrorName(exists ? t("configuration.error.alreadyExists") : "");
         }
       }
     };
@@ -84,12 +91,13 @@ const Configuration = () => {
                 });
               }}
               onBlur={(e: any) => {
-                checkFolderExists(e.target.value);
+                checkExists(e.target.value, "folder");
               }}
               placeholder={t("configuration.form.projectFolder.placeholder")}
-              className={error ? "error-textField" : ""}
+              className={errorFolder ? "error-textField" : ""}
             />
-            {error && <div className="error-message">{error}</div>}
+            {errorFolder && <div className="error-message">{errorFolder}</div>}
+            {errorName && <div className="error-message">{errorName}</div>}
           </div>
           <div className="slash-separator">
             <p>/</p>
@@ -107,7 +115,16 @@ const Configuration = () => {
                   projectName: e.target.value,
                 });
               }}
+              onBlur={(e: any) => {
+                checkExists(
+                  e.target.value
+                    ? configuration.projectFolder + "/" + e.target.value
+                    : e.target.value,
+                  "name",
+                );
+              }}
               placeholder={t("configuration.form.projectName.placeholder")}
+              className={errorName ? "error-textField" : ""}
             />
           </div>
         </div>

@@ -34,9 +34,10 @@ export async function getFunctions(data: any) {
  * @returns {Promise<{ exists: boolean }>} An object containing whether the folder exists.
  */
 export async function checkFolderExists(data: any) {
-  const folderPath = data.folderPath;
-  const exists = await Sam.checkFolderExists(folderPath);
-  return { exists };
+  const path = data.path;
+  const type = data.type;
+  const exists = await Sam.checkFolderExists(path);
+  return { exists, type };
 }
 
 /**

@@ -211,17 +211,17 @@ export class MainPanel {
         const data = message.data;
 
         switch (command) {
-          case "checkFolderExists":
+          case "checkExists":
             checkFolderExists(data)
               .then((response) => {
                 webview.postMessage({
-                  command: "folderCheckResult",
+                  command: "checkResult",
                   data: response,
                 });
               })
               .catch((error) => {
                 webview.postMessage({
-                  command: "folderCheckResult",
+                  command: "checkResult",
                   data: { success: false, error },
                 });
               });

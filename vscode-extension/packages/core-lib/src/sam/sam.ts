@@ -121,7 +121,7 @@ export async function getRegions(): Promise<RegionsResult> {
  * @returns {Promise<string>} The default path
  */
 export async function getDefaultPath(): Promise<string> {
-  const defaultPath = process.env.HOME + "/Documents/aws-lambda-swift";
+  const defaultPath = process.env.HOME + "/Documents/MySwiftLambdaFunctions";
   if (!fs.existsSync(defaultPath)) {
     fs.mkdirSync(defaultPath, { recursive: true });
   }

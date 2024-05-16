@@ -39,7 +39,9 @@
         },
         "error": {
             "emptyPath": "Project folder path cannot be empty",
-            "folderDoesNotExist": "Folder does not exist"
+            "folderDoesNotExist": "Folder does not exist",
+            "emptyName": "Project name cannot be empty",
+            "alreadyExists": "Project already exists, please choose another name"
         }
     },
     "initializeProject": {
@@ -58,7 +60,10 @@
         "info": {
             "message": "This will create a new project with the selected template."
         },
-        "button": "Initialize"
+        "button": "Initialize",
+        "error": {
+            "folderAlreadyExists": "Project already exist, please choose another folder"
+        }
     },
     "buildProject": {
         "title": "Build Project",
