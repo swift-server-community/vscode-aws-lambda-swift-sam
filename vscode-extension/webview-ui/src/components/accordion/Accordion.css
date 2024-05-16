@@ -1,0 +1,76 @@
+/*===----------------------------------------------------------------------===//
+ *
+ * This source file is part of the AWS Lambda Swift 
+ * VSCode extension open source project.
+ *
+ * Copyright (c) 2024, the VSCode AWS Lambda Swift extension project authors.
+ * Licensed under Apache License v2.0.
+ *
+ * See LICENSE.txt for license information
+ * See CONTRIBUTORS.txt for the list of VSCode AWS Lambda Swift project authors
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ *===----------------------------------------------------------------------===//
+ */
+
+.accordion-parent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.accordion .content-parent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.15s ease-out;
+}
+
+.accordion.toggled .content-parent{
+    max-height: 1000px;
+    transition: max-height 0.15s ease-in;
+}
+
+.accordion .content-parent {
+    padding: 0 2rem;
+}
+
+.accordion .toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: var(--vscode-activityBar-border);
+    height: 2.5rem;
+    padding: 0 1rem;
+}
+
+.step-title {
+    flex-grow: 1;
+    font-weight: bold;
+    padding: 0 2rem;
+}
+
+.accordion svg {
+    transition: transform 0.15s ease-in;
+}
+
+.accordion.toggled .direction-indicator svg {
+    transform: rotate(90deg);
+}
+
+.step-indicator svg {
+    color: #FFA16C;
+}
+
+.green svg {
+    color: #5BFF6C;
+}

@@ -1,0 +1,27 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": ["@typescript-eslint", "prettier"],
+    "rules": {
+      "prettier/prettier": "error",
+      "semi": ["error", "always"],
+      "quotes": ["error", "double"],
+      "indent": ["error", 2],
+      "comma-dangle": ["error", "always-multiline"],
+      "no-console": "off",
+      "no-unused-vars": "warn",
+      "no-undef": "error",
+      "no-extra-semi": "error",
+      "no-unreachable": "error",
+      "@typescript-eslint/no-explicit-any": "off"
+    },
+    "env": {
+        "node": true
+    },
+    "ignorePatterns": ["webview-ui/**", "MainPanel.ts"]
+}
+  

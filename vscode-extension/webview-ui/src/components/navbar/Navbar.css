@@ -1,0 +1,87 @@
+/*===----------------------------------------------------------------------===//
+ *
+ * This source file is part of the AWS Lambda Swift 
+ * VSCode extension open source project.
+ *
+ * Copyright (c) 2024, the VSCode AWS Lambda Swift extension project authors.
+ * Licensed under Apache License v2.0.
+ *
+ * See LICENSE.txt for license information
+ * See CONTRIBUTORS.txt for the list of VSCode AWS Lambda Swift project authors
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ *===----------------------------------------------------------------------===//
+ */
+ 
+a {
+    text-decoration: none;
+    color: var(--vscode-foreground);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.navbar-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dropdown-icon svg {
+    cursor: pointer;
+}
+
+.navbar-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    right: 0;
+    background-color: var(--vscode-editorGroupHeader-tabsBackground);
+    width: 15rem;
+    z-index: 10;
+  }
+  
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 3rem;
+  }
+  
+  .dropdown-item:hover {
+    background-color: var(--vscode-toolbar-hoverBackground);
+  }
+
+  .dropdown-text {
+    margin-left: 1rem;
+    flex-grow: 1;
+  }
+
+  .error {
+    color: var(--vscode-errorForeground);
+  }
+  
+  .dropdown-icon-container {
+    width: 3rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .questionmark {
+    background-color: var(--vscode-checkbox-background);
+  }
+
+  .trash {
+    background-color: var(--vscode-errorForeground);
+  }

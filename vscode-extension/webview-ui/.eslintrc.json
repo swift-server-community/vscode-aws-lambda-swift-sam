@@ -1,0 +1,36 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": ["@typescript-eslint", "react", "react-hooks", "prettier"],
+    "rules": {
+      "prettier/prettier": "error",
+      "semi": ["error", "always"],
+      "quotes": ["error", "double"],
+      "indent": ["error", 2],
+      "comma-dangle": ["error", "always-multiline"],
+      "no-console": "off",
+      "no-unused-vars": "warn",
+      "no-undef": "error",
+      "no-extra-semi": "error",
+      "no-unreachable": "error",
+      "@typescript-eslint/no-explicit-any": "off"
+    },
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "ignorePatterns": ["vscode.ts"]
+  }
+  

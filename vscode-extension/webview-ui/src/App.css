@@ -1,0 +1,89 @@
+/*===----------------------------------------------------------------------===//
+ *
+ * This source file is part of the AWS Lambda Swift 
+ * VSCode extension open source project.
+ *
+ * Copyright (c) 2024, the VSCode AWS Lambda Swift extension project authors.
+ * Licensed under Apache License v2.0.
+ *
+ * See LICENSE.txt for license information
+ * See CONTRIBUTORS.txt for the list of VSCode AWS Lambda Swift project authors
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ *===----------------------------------------------------------------------===//
+ */
+ 
+* {
+  font-family: "Inter", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  width: 775px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.label-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.init-container {
+  background-color: var(--vscode-editorGroupHeader-tabsBackground);
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  position: relative;
+}
+
+.button-container {
+  grid-column: 3;
+  margin-left: auto;
+  width: 100%;
+}
+
+.button-container {
+  margin-top: auto;
+}
+
+.button-container vscode-button {
+  width: 100%;
+}
+
+.dropdown-container {
+  display: flex;
+  gap: 5px;
+}
+
+.dropdown-container vscode-dropdown {
+  flex-grow: 1;
+}
+
+.app-loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.app-loading-ring {
+  width: 50px;
+  height: 50px;
+}

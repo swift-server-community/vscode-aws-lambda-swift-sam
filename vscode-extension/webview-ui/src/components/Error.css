@@ -1,0 +1,55 @@
+/*===----------------------------------------------------------------------===//
+ *
+ * This source file is part of the AWS Lambda Swift 
+ * VSCode extension open source project.
+ *
+ * Copyright (c) 2024, the VSCode AWS Lambda Swift extension project authors.
+ * Licensed under Apache License v2.0.
+ *
+ * See LICENSE.txt for license information
+ * See CONTRIBUTORS.txt for the list of VSCode AWS Lambda Swift project authors
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ *===----------------------------------------------------------------------===//
+ */
+ 
+.error-container {
+  position: relative;
+  background-color: var(--vscode-debugToolBar-background);
+  border-width: 2px;
+  border-style: solid;
+  width: 100%;
+  display: flex;
+  border-width: 0;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.error-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+}
+
+.error-icon {
+  width: 100px;
+  min-width: 100px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--vscode-editorMarkerNavigationError-background);
+}
+
+.close-icon svg {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.error-type {
+  font-weight: bold;
+  margin-bottom: 5px;
+}

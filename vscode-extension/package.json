@@ -1,0 +1,77 @@
+{
+  "name": "vscode-aws-lambda-swift",
+  "displayName": "VSCode AWS Lambda Swift",
+  "publisher": "MarwaneKoutar",
+  "description": "vscode-aws-lambda-swift is a powerful Visual Studio Code extension designed to streamline the development and deployment of AWS Lambda functions using the Swift programming language. With this extension, developers can create, test, deploy, and manage Lambda functions directly from within their VS Code environment.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarwaneKoutar/vscode-aws-lambda-swift"
+  },
+  "version": "1.1.7",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "vals.showMainPanel",
+        "title": "Open AWS Lambda Swift Dashboard",
+        "category": "AWS Lambda Swift"
+      }
+    ]
+  },
+  "scripts": {
+    "install:all": "npm install && cd webview-ui && npm install",
+    "start:webview": "cd webview-ui && npm run start",
+    "build:webview": "cd webview-ui && npm run build",
+    "vscode:prepublish": "npm run build:all",
+    "compile": "tsc -p ./",
+    "build:core-lib": "cd packages/core-lib && npm run build",
+    "build:all": "npm run build:core-lib && npm run build:webview && npm run compile",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint ./src --ext .ts",
+    "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint ./src --ext .ts --fix",
+    "docs": "typedoc --out docs --entryPointStrategy expand src --exclude webview-ui"
+  },
+  "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.0.3",
+    "@types/node": "^20.12.7",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "glob": "^10.3.12",
+    "prettier": "^3.2.5",
+    "semantic-release": "^23.0.8",
+    "semantic-release-vsce": "^5.7.1",
+    "typedoc": "0.25.13",
+    "typescript": "^5.4.5",
+    "vsce": "^1.97.0"
+  },
+  "dependencies": {
+    "core-lib": "workspace:*",
+    "winston": "^3.13.0"
+  },
+  "badges": [
+    {
+      "href": "https://marketplace.visualstudio.com/items?itemName=MarwaneKoutar.vscode-aws-lambda-swift",
+      "url": "https://img.shields.io/badge/VS%20Code-compatible-brightgreen.svg",
+      "description": "Compatible with VS Code"
+    },
+    {
+      "href": "https://github.com/MarwaneKoutar/vscode-aws-lambda-swift",
+      "url": "https://img.shields.io/badge/Open%20Source-Yes-green.svg",
+      "description": "Open Source"
+    }
+  ],
+  "markdown": "github",
+  "icon": "media/logo.png"
+}

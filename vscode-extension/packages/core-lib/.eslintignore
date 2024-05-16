@@ -1,0 +1,4 @@
+dist/
+.github/
+node_modules/
+src/playground.ts

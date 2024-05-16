@@ -1,0 +1,64 @@
+/*===----------------------------------------------------------------------===//
+ *
+ * This source file is part of the AWS Lambda Swift 
+ * VSCode extension open source project.
+ *
+ * Copyright (c) 2024, the VSCode AWS Lambda Swift extension project authors.
+ * Licensed under Apache License v2.0.
+ *
+ * See LICENSE.txt for license information
+ * See CONTRIBUTORS.txt for the list of VSCode AWS Lambda Swift project authors
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ *===----------------------------------------------------------------------===//
+ */
+ 
+.configuration-parent {
+    width: 100%;
+}
+
+.configuration-container {
+    background-color: var(--vscode-editorGroupHeader-tabsBackground);
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+}
+
+.path-input {
+    width: 100%;
+    display: flex;
+}
+
+.path-input-path, .path-input-name {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.slash-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 0.3rem;
+}
+
+.path-input-path {
+    flex: 3;
+}
+
+.path-input-name {
+    flex: 1;
+}
+
+.error-message {
+    color: var(--vscode-errorForeground) !important;
+    font-size: 0.8rem !important;
+}
+
+.error-textField {
+    border: 1px solid var(--vscode-inputValidation-errorBorder) !important;
+    border-radius: calc(var(--corner-radius-round) * 1px);
+}

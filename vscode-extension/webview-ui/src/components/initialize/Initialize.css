@@ -1,0 +1,64 @@
+/*===----------------------------------------------------------------------===//
+ *
+ * This source file is part of the AWS Lambda Swift 
+ * VSCode extension open source project.
+ *
+ * Copyright (c) 2024, the VSCode AWS Lambda Swift extension project authors.
+ * Licensed under Apache License v2.0.
+ *
+ * See LICENSE.txt for license information
+ * See CONTRIBUTORS.txt for the list of VSCode AWS Lambda Swift project authors
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ *===----------------------------------------------------------------------===//
+ */
+ 
+.markdown-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  gap: 0.5rem;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.markdown-container p:first-child {
+  margin: 0;
+}
+
+.markdown {
+  padding: 1rem;
+  background-color: var(--dropdown-background);
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.visual-representation-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  gap: 0.5rem;
+}
+
+.visual-representation-container p {
+  margin: 0;
+}
+
+.visual-representation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height: 400px;
+  padding: 1rem;
+  background-color: var(--dropdown-background);
+}
+
+.visual-representation img {
+  width: auto;
+  max-height: 100%;
+  object-fit: contain;
+}

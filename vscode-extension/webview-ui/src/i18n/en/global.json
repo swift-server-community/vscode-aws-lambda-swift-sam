@@ -1,0 +1,120 @@
+{
+    "dropdown": {
+        "prerequisites": {
+            "title": "Check prerequisites",
+            "modal": {
+                "title": "Prerequisites",
+                "closeButton": "Close",
+                "retryButton": "Retry",
+                "missingPrerequisiteMessage": "is missing, you can download it here"
+            }
+        },
+        "delete": {
+            "title": "Delete stack",
+            "modal": {
+                "title": "Delete Confirmation",
+                "stackNameLabel": "Stack Name",
+                "stackNamePlaceholder": "Your stack name to delete",
+                "deleteButton": "Delete",
+                "deleteButtonIsLoading": "Deleting...",
+                "cancelButton": "Cancel",
+                "successMessage": "Stack deleted successfully"
+            }
+        }
+    },
+    "configuration": {
+        "title": "Configuration",
+        "form": {
+            "projectName": {
+                "label": "Name",
+                "placeholder": "Project name"
+            },
+            "region": {
+                "label": "Region"
+            },
+            "projectFolder": {
+                "label": "Project Folder",
+                "placeholder": "Your project folder path"
+            }
+        },
+        "error": {
+            "emptyPath": "Project folder path cannot be empty",
+            "folderDoesNotExist": "Folder does not exist"
+        }
+    },
+    "initializeProject": {
+        "title": "Initialize Project",
+        "form": {
+            "template": {
+                "label": "Template"
+            },
+            "visualRepresentation": {
+                "label": "Visual Representation"
+            },
+            "info": {
+                "label": "Information"
+            }
+        },
+        "info": {
+            "message": "This will create a new project with the selected template."
+        },
+        "button": "Initialize"
+    },
+    "buildProject": {
+        "title": "Build Project",
+        "form": {
+            "buildFolder": {
+                "label": "Build Folder",
+                "placeholder": "Your build folder"
+            }
+        },
+        "info": {
+            "message": "This will build the project."
+        },
+        "button": "Build"
+    },
+    "localInvoke": {
+        "title": "Local Invoke",
+        "form": {
+            "function": {
+                "label": "Function"
+            },
+            "event": {
+                "label": "Event"
+            }
+        },
+        "info": {
+            "message": "This will invoke the function locally with the selected event. Only works with the \"api-to-lambda\" template. Make sure the configuration is set correctly (Project Name, Project Folder), otherwise the functions and events will not be found."
+        },
+        "button": "Invoke"
+    },
+    "deployProject": {
+        "title": "Deploy Project",
+        "form": {
+            "stackName": {
+                "label": "Stack Name",
+                "placeholder": "Your stack name"
+            }
+        },
+        "info": {
+            "message": "This will deploy the stack with the selected stack name."
+        },
+        "button": "Deploy"
+    },
+    "remoteInvoke": {
+        "title": "Remote Invoke",
+        "form": {
+            "stackName": {
+                "label": "Stack Name",
+                "placeholder": "Your stack name"
+            }
+        },
+        "info": {
+            "message": "This will invoke the function remotely with the selected event. Make sure the stack is deployed and that the configuration is set correctly (Project Name, Region, Project Folder), otherwise the functions and events will not be found."
+        },
+        "button": "Invoke"
+    },
+    "console": {
+        "title": "Output"
+    }
+}
