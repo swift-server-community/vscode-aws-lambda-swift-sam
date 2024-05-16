@@ -85,7 +85,7 @@ const Navbar = () => {
         <div className="navbar-items">
           <h1 className="">vscode-aws-lambda-swift</h1>
           <a
-            href="https://github.com/MarwaneKoutar/vscode-aws-lambda-swift"
+            href="https://github.com/swift-server-community/vscode-aws-lambda-swift-sam"
             className="github-icon"
           >
             <VscGithubInverted size={30} />
