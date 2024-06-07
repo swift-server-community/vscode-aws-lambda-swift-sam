@@ -167,7 +167,7 @@ const Initialize: React.FC<InitializeProps> = ({ onComplete, setLoading }) => {
         <div className="visual-representation">
           {selectedTemplate && (
             <img
-              src={`https://raw.githubusercontent.com/MarwaneKoutar/swift-on-aws-lambda-sam-templates/main/${
+              src={`https://raw.githubusercontent.com/swift-server-community/aws-lambda-swift-sam-template/main/${
                 configuration.templates.find((e) => e.name === selectedTemplate)
                   ?.path
               }/doc/${configuration.theme}.webp`}
