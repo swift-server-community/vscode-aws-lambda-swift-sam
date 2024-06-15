@@ -62,7 +62,7 @@ const Console = () => {
       {/* Console output */}
       <div className="console-output" ref={consoleRef}>
         {consoleMessages.map((message, index) => (
-          <p key={index}>{message}</p>
+          <pre key={index}>{message}</pre>
         ))}
       </div>
     </div>

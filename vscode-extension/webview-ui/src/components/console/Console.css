@@ -28,7 +28,7 @@
     white-space: nowrap;
     overflow-x: auto;
 }
-
-.console-output p {
+.console-output pre {
+    line-height: 1em;
     margin: 0;
 }
