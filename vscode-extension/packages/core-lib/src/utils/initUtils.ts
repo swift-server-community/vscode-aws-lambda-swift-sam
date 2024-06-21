@@ -28,9 +28,12 @@ const commandRunner = CommandRunner.getInstance();
  * @throws {GitCloneFailedError} If the template repository cannot be cloned
  * @returns {Promise<CommandResult>}
  */
-export async function cloneTemplate(): Promise<CommandResult> {
+export async function cloneTemplate(branch: string): Promise<CommandResult> {
   const cloneArgs: string[] = [
     "clone",
+    "--single-branch",
+    "--branch",
+    branch,
     "--depth",
     "1",
     config.TEMPLATES_REPO_URL,

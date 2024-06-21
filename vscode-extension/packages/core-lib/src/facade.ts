@@ -14,7 +14,10 @@
 //===----------------------------------------------------------------------===//
 
 /* eslint-disable no-unused-vars */
-import { getTemplateTitles } from "./services/templateServices";
+import {
+  getTemplateTitles,
+  getTemplateBranches,
+} from "./services/templateServices";
 import logger from "./logger";
 import { config } from "./config/config";
 import * as Sam from "./sam/sam";
@@ -41,6 +44,20 @@ const commandRunner = CommandRunner.getInstance();
 export async function getFunctions(path: string): Promise<string[]> {
   logger.debug("Getting functions...");
   return await Sam.getFunctions(path);
+}
+
+/**
+ * Gets all the branches from the template repository
+ * @async
+ * @example
+ * const branches = await getBranches();
+ * console.log("Branches:", branches);
+ * @throws {Error} If the branches cannot be fetched
+ * @returns {Promise<string[]>} A list of branches
+ */
+export async function getBranches(): Promise<string[]> {
+  logger.debug("Getting branches...");
+  return await getTemplateBranches(config.TEMPLATES_REPO_URL);
 }
 
 /**
@@ -150,9 +167,11 @@ export function unsubscribeFromStderr(listener: (data: string) => void) {
  * @throws {Error} If the templates cannot be retrieved
  * @returns {Promise<string[]>} A list of available template titles
  */
-export async function getTemplates(): Promise<TemplatesResult> {
+export async function getTemplates(
+  branch: string = "main",
+): Promise<TemplatesResult> {
   logger.debug("Getting templates...");
-  return await getTemplateTitles(config.TEMPLATES_JSON_URL);
+  return await getTemplateTitles(config.RAW_TEMPLATES_REPO_URL, branch);
 }
 
 /**
@@ -170,11 +189,12 @@ export async function initializeProject(
   name: string,
   template: string,
   path: string,
+  branch: string = "main",
 ): Promise<CommandResult> {
   logger.debug(
-    `Initializing project with template ${template} and name ${name} in directory ${path}...`,
+    `Initializing project with template ${template} and name ${name} in directory ${path}... from branch ${branch}`,
   );
-  return await Sam.runInitializeProject(name, template, path);
+  return await Sam.runInitializeProject(name, template, path, branch);
 }
 
 /**

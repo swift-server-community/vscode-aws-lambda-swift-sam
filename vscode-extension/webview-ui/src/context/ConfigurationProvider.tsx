@@ -32,6 +32,7 @@ interface Configuration {
   locale: string;
   isLoading: boolean;
   theme: string;
+  branches: string[];
 }
 
 /**
@@ -53,6 +54,7 @@ export const ConfigurationContext = createContext<{
     locale: "",
     isLoading: true,
     theme: "",
+    branches: [],
   },
   setConfiguration: () => {},
 });
@@ -76,6 +78,7 @@ export const ConfigurationProvider: React.FC = ({ children }) => {
     locale: "",
     isLoading: true,
     theme: "",
+    branches: [],
   };
 
   // State to manage the configuration
@@ -100,6 +103,7 @@ export const ConfigurationProvider: React.FC = ({ children }) => {
           locale: message.data.locale,
           isLoading: false,
           theme: getTheme(message.data.theme),
+          branches: message.data.branches,
         }));
       }
     });

@@ -50,6 +50,9 @@
             "template": {
                 "label": "Template"
             },
+            "branch": {
+                "label": "Branch"
+            },
             "visualRepresentation": {
                 "label": "Visual Representation"
             },
