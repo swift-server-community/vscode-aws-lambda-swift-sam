@@ -54,7 +54,7 @@ describe("TemplateService", () => {
       expect(data.list[1].name).toBe("sqsToLambda");
       expect(data.list[1].path).toBe("some/path/to/sqs.png");
       expect(axios.get).toHaveBeenCalledWith(
-        "https://example.com/templates.json",
+        "https://example.com/templates.json/main/cookiecutter.json",
       );
 
       axiosGetSpy.mockRestore();
