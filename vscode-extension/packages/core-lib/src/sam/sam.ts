@@ -151,6 +151,7 @@ export async function runInitializeProject(
   name: string,
   template: string,
   path: string,
+  branch: string,
 ): Promise<CommandResult> {
   try {
     if (!name) {
@@ -181,7 +182,7 @@ export async function runInitializeProject(
     const exitCode = 0;
 
     await cleanupTempDirectory();
-    const cloneResult = await cloneTemplate();
+    const cloneResult = await cloneTemplate(branch);
     output.stdout += cloneResult.output.stdout;
     output.stderr += cloneResult.output.stderr;
     if (cloneResult.exitCode !== 0) {

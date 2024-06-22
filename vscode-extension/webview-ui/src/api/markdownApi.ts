@@ -16,7 +16,7 @@
 // This file contains the API for fetching Markdown files from the specified template repository.
 const GITHUB_API_URL =
   process.env.GITHUB_API_URL ||
-  "https://raw.githubusercontent.com/swift-server-community/aws-lambda-swift-sam-template/main/";
+  "https://raw.githubusercontent.com/swift-server-community/aws-lambda-swift-sam-template";
 
 /**
  * Fetches a Markdown file from the specified template repository.
@@ -24,9 +24,12 @@ const GITHUB_API_URL =
  * @returns {Promise<string>} - A promise that resolves to the content of the Markdown file.
  * @throws {Error} - If fetching the Markdown file fails.
  */
-export async function fetchMarkdownFile(template: string): Promise<string> {
+export async function fetchMarkdownFile(
+  template: string,
+  branch: string = "main",
+): Promise<string> {
   // Constructing the URL of the Markdown file
-  const url = `${GITHUB_API_URL}/${template}/doc/INFO.md`;
+  const url = `${GITHUB_API_URL}/${branch}/${template}/doc/INFO.md`;
 
   try {
     // Fetching the Markdown file

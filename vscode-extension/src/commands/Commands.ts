@@ -52,6 +52,25 @@ export async function getEvents(data: any) {
 }
 
 /**
+ * Fetches templates from the specified branch.
+ * @param {any} data - Branch information.
+ * @returns {Promise<{ templates: { list: [{ name: string, path: string }] }, success: boolean }>} An object containing fetched templates and success status.
+ * @async
+ * @example
+ * const templates = await getTemplates({ branch: "main" });
+ * console.log("Templates:", templates);
+ */
+export async function getTemplates(data: any) {
+  try {
+    const branch = data.branch;
+    const templates = await Sam.getTemplates(branch);
+    return { templates, success: true };
+  } catch (error: any) {
+    window.showErrorMessage(error.message);
+  }
+}
+
+/**
  * Fetches necessary data to initialize the project.
  * @returns {Promise<{ templates: any[], path: string, regions: any[], locale: string, theme: string }>} Object with templates, path, regions, locale, and theme.
  */
@@ -82,7 +101,8 @@ export async function getReady() {
     }
     const locale = env.language || "en";
     const theme = window.activeColorTheme.kind || "dark";
-    return { templates, path, regions, locale, theme };
+    const branches = await Sam.getBranches();
+    return { templates, path, regions, locale, theme, branches };
   } catch (error: any) {
     window.showErrorMessage(error.message);
   }
@@ -137,13 +157,19 @@ export async function initializeProject(data: any) {
     const name = data.name;
     const selectedTemplate = data.template;
     let path = data.path;
+    const branch = data.branch;
 
     if (!path) {
       const workspaceFolders = workspace.workspaceFolders;
       path = workspaceFolders?.[0]?.uri.fsPath;
     }
 
-    const result = await Sam.initializeProject(name, selectedTemplate, path);
+    const result = await Sam.initializeProject(
+      name,
+      selectedTemplate,
+      path,
+      branch || "main",
+    );
     return { success: result.exitCode === 0 };
   } catch (error: any) {
     window.showErrorMessage(error.message);

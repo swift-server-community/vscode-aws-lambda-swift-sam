@@ -18,6 +18,7 @@ import {
   VSCodeButton,
   VSCodeDropdown,
   VSCodeOption,
+  VSCodeProgressRing,
 } from "@vscode/webview-ui-toolkit/react";
 import React, { useEffect, useState, useContext, useCallback } from "react";
 import { ConfigurationContext } from "../../context/ConfigurationProvider";
@@ -52,6 +53,12 @@ const Initialize: React.FC<InitializeProps> = ({ onComplete, setLoading }) => {
   const [selectedTemplate, setSelectedTemplate] = useState("");
   const [templateInfo, setTemplateInfo] = useState("");
 
+  // State for selected branch
+  const [selectedBranch, setSelectedBranch] = useState<string>("");
+
+  // State for loading templates
+  const [loadingTemplates, setLoadingTemplates] = useState<boolean>(false);
+
   // Effect to set default selected template when templates are loaded
   useEffect(() => {
     if (configuration.templates.length > 0) {
@@ -59,12 +66,24 @@ const Initialize: React.FC<InitializeProps> = ({ onComplete, setLoading }) => {
     }
   }, [configuration.templates]);
 
+  // Effect to set default selected branch when branches are loaded
+  useEffect(() => {
+    if (configuration.branches.length > 0) {
+      setSelectedBranch(configuration.branches[0]);
+    }
+  }, [configuration.branches]);
+
   // Effect to fetch and set template info when selected template changes
   useEffect(() => {
-    if (selectedTemplate) {
+    if (
+      selectedTemplate &&
+      configuration.templates.length > 0 &&
+      loadingTemplates === false
+    ) {
       fetchMarkdownFile(
         configuration.templates.find((e) => e.name === selectedTemplate)
           ?.path ?? "",
+        selectedBranch,
       )
         .then((data) => {
           setTemplateInfo(data);
@@ -73,7 +92,12 @@ const Initialize: React.FC<InitializeProps> = ({ onComplete, setLoading }) => {
           console.error("Error fetching template info:", error);
         });
     }
-  }, [selectedTemplate, configuration.templates]);
+  }, [
+    selectedTemplate,
+    configuration.templates,
+    selectedBranch,
+    loadingTemplates,
+  ]);
 
   /**
    * Handles project initialization.
@@ -86,6 +110,7 @@ const Initialize: React.FC<InitializeProps> = ({ onComplete, setLoading }) => {
         name: configuration.projectName,
         template: selectedTemplate,
         path: configuration.projectFolder,
+        branch: selectedBranch,
       },
     });
     window.addEventListener("message", (event) => {
@@ -141,6 +166,40 @@ const Initialize: React.FC<InitializeProps> = ({ onComplete, setLoading }) => {
     setConfiguration,
   ]);
 
+  /**
+   * Function to change the selected branch.
+   * @param branch The branch to change to.
+   */
+  const changeBranch = (branch: string) => {
+    setLoadingTemplates(true);
+    setSelectedBranch(branch);
+
+    vscode.postMessage({
+      command: "templates",
+      data: {
+        branch: branch,
+      },
+    });
+
+    window.addEventListener("message", (event) => {
+      const message = event.data;
+      if (message.command === "templates" && message.data.success) {
+        setConfiguration((prevConfig) => ({
+          ...prevConfig,
+          templates: message.data.templates.list,
+        }));
+        setSelectedTemplate(message.data.templates.list[0].name);
+        setLoadingTemplates(false);
+      } else {
+        if (message.command === "templates" && !message.data.success) {
+          setError(message.data.error);
+          console.debug("Error fetching templates");
+          setLoadingTemplates(false);
+        }
+      }
+    });
+  };
+
   return (
     <div className="init-container initialize-container">
       {/* Dropdown for selecting template */}
@@ -152,6 +211,7 @@ const Initialize: React.FC<InitializeProps> = ({ onComplete, setLoading }) => {
           id="template"
           value={selectedTemplate}
           onChange={(e: any) => setSelectedTemplate(e.target.value)}
+          disabled={loadingTemplates}
         >
           {configuration.templates.map((template) => (
             <VSCodeOption key={template.name} value={template.name}>
@@ -161,13 +221,39 @@ const Initialize: React.FC<InitializeProps> = ({ onComplete, setLoading }) => {
         </VSCodeDropdown>
       </div>
 
+      {/* Dropdown for selecting branch */}
+      <div className="label-input">
+        <label htmlFor="branch">
+          {t("initializeProject.form.branch.label")}
+        </label>
+        <VSCodeDropdown
+          id="branch"
+          value={selectedBranch}
+          onChange={(e: any) => changeBranch(e.target.value)}
+          disabled={loadingTemplates}
+        >
+          {configuration.branches.map((branch) => (
+            <VSCodeOption key={branch} value={branch}>
+              {branch}
+            </VSCodeOption>
+          ))}
+        </VSCodeDropdown>
+      </div>
+
+      {/* Progress ring for loading templates */}
+      {loadingTemplates && (
+        <div className="loading-ring-container">
+          <VSCodeProgressRing className="loading-ring" />
+        </div>
+      )}
+
       {/* Visual representation of the selected template */}
       <div className="visual-representation-container">
         <p>{t("initializeProject.form.visualRepresentation.label")}</p>
         <div className="visual-representation">
           {selectedTemplate && (
             <img
-              src={`https://raw.githubusercontent.com/swift-server-community/aws-lambda-swift-sam-template/main/${
+              src={`https://raw.githubusercontent.com/swift-server-community/aws-lambda-swift-sam-template/${selectedBranch}/${
                 configuration.templates.find((e) => e.name === selectedTemplate)
                   ?.path
               }/doc/${configuration.theme}.webp`}

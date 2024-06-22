@@ -14,12 +14,12 @@
 //===----------------------------------------------------------------------===//
 
 export const config = {
-  TEMPLATES_JSON_URL:
-    process.env.TEMPLATES_JSON_URL ||
-    "https://raw.githubusercontent.com/swift-server-community/aws-lambda-swift-sam-template/main/cookiecutter.json",
+  RAW_TEMPLATES_REPO_URL:
+    process.env.RAW_TEMPLATES_REPO_URL ||
+    "https://raw.githubusercontent.com/swift-server-community/aws-lambda-swift-sam-template",
   TEMPLATES_REPO_URL:
     process.env.TEMPLATES_REPO_URL ||
-    "https://github.com/swift-server-community/aws-lambda-swift-sam-template.git",
+    "https://github.com/swift-server-community/aws-lambda-swift-sam-template",
   CLONED_TEMPLATES_DIR:
     process.env.CLONED_TEMPLATES_DIR || "/tmp/template-repo",
   EVENTS_DIR: process.env.EVENTS_DIR || "/events",

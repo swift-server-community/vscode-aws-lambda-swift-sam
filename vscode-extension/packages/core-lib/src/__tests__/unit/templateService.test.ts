@@ -45,6 +45,7 @@ describe("TemplateService", () => {
 
       const data = await getTemplateTitles(
         "https://example.com/templates.json",
+        "main",
       );
 
       expect(data.list.length).toBe(2);
@@ -53,14 +54,16 @@ describe("TemplateService", () => {
       expect(data.list[1].name).toBe("sqsToLambda");
       expect(data.list[1].path).toBe("some/path/to/sqs.png");
       expect(axios.get).toHaveBeenCalledWith(
-        "https://example.com/templates.json",
+        "https://example.com/templates.json/main/cookiecutter.json",
       );
 
       axiosGetSpy.mockRestore();
     });
 
     it("should throw TemplateFetchError when URL is not defined", async () => {
-      await expect(getTemplateTitles("")).rejects.toThrow(TemplateFetchError);
+      await expect(getTemplateTitles("", "")).rejects.toThrow(
+        TemplateFetchError,
+      );
     });
 
     it("should throw TemplateFetchError when request fails", async () => {
@@ -70,7 +73,7 @@ describe("TemplateService", () => {
         .mockRejectedValueOnce(new Error(errorMessage));
 
       await expect(
-        getTemplateTitles("https://example.com/templates.json"),
+        getTemplateTitles("https://example.com/templates.json", "main"),
       ).rejects.toThrow(TemplateFetchError);
 
       axiosGetSpy.mockRestore();

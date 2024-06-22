@@ -37,6 +37,7 @@ import {
   getEvents,
   getFunctions,
   checkFolderExists,
+  getTemplates,
 } from "../commands/Commands";
 
 /**
@@ -211,6 +212,18 @@ export class MainPanel {
         const data = message.data;
 
         switch (command) {
+          case "templates":
+            getTemplates(data)
+              .then((response) => {
+                webview.postMessage({ command: "templates", data: response });
+              })
+              .catch((error) => {
+                webview.postMessage({
+                  command: "templates",
+                  data: { success: false, error },
+                });
+              });
+            return;
           case "checkExists":
             checkFolderExists(data)
               .then((response) => {
