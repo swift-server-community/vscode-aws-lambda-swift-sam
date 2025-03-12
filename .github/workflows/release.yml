@@ -36,7 +36,7 @@ jobs:
         working-directory: vscode-extension
 
       - name: Publish extension
-        run: vcse package && vcse publish
+        run: vsce package && vsce publish
         env:
          VSCE_PAT: ${{ secrets.VSCE_TOKEN }}
         working-directory: vscode-extension
