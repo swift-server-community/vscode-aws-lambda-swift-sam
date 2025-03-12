@@ -14,7 +14,7 @@
 //===----------------------------------------------------------------------===//
 
 /* eslint-disable indent */
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, PropsWithChildren } from "react";
 import { vscode } from "../utilities/vscode";
 
 /**
@@ -64,7 +64,7 @@ export const ConfigurationContext = createContext<{
  * Manages the application configuration state and provides it to the context.
  * @param children The child components wrapped by the provider.
  */
-export const ConfigurationProvider: React.FC = ({ children }) => {
+export const ConfigurationProvider: React.FC<PropsWithChildren> = ({ children }) => {
   // Initial configuration state
   const initialConfig: Configuration = {
     projectName: "",

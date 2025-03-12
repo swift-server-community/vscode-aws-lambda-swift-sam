@@ -21,6 +21,8 @@ import i18next from "i18next";
 import global_en from "./i18n/en/global.json";
 import { I18nextProvider } from "react-i18next";
 import { ErrorProvider } from "./context/ErrorProvider";
+import { createRoot } from 'react-dom/client';
+
 
 /**
  * Initialize i18next and set up localization resources.
@@ -40,15 +42,22 @@ i18next.init({
  * The root component of the application.
  * @returns {JSX.Element} The rendered root component.
  */
-ReactDOM.render(
-  <React.StrictMode>
-    <ErrorProvider>
-      <I18nextProvider i18n={i18next}>
-        <ConfigurationProvider>
-          <App />
-        </ConfigurationProvider>
-      </I18nextProvider>
-    </ErrorProvider>
-  </React.StrictMode>,
-  document.getElementById("root"),
-);
+// Find your root element
+const container = document.getElementById('root');
+
+// Create a root
+if (container) {
+  const root = createRoot(container);
+
+  root.render(
+    <React.StrictMode>
+      <ErrorProvider>
+        <I18nextProvider i18n={i18next}>
+          <ConfigurationProvider>
+            <App />
+          </ConfigurationProvider>
+        </I18nextProvider>
+      </ErrorProvider>
+    </React.StrictMode>
+  );
+}
