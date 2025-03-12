@@ -54,7 +54,7 @@
     "semantic-release-vsce": "^5.7.1",
     "typedoc": "0.25.13",
     "typescript": "^5.4.5",
-    "vsce": "^1.97.0"
+    "vsce": "^2.15.0"
   },
   "dependencies": {
     "core-lib": "workspace:*",
