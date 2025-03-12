@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: vscode-extension/packages/core-lib
+        working-directory: vscode-extension
     steps:
       - uses: actions/checkout@v4
 
