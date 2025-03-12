@@ -32,5 +32,10 @@ jobs:
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: vscode-extension
+
+      - name: Publish extension
+        run: npx vcse package && npx vcse publish
+        env:
           VSCE_PAT: ${{ secrets.VSCE_TOKEN }}
         working-directory: vscode-extension
