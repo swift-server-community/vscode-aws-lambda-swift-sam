@@ -7,12 +7,12 @@
     "type": "git",
     "url": "https://github.com/swift-server-community/vscode-aws-lambda-swift-sam"
   },
-  "version": "1.1.8",
+  "version": "1.1.9",
   "workspaces": [
     "packages/*"
   ],
   "engines": {
-    "vscode": "^1.75.0"
+    "vscode": "^1.98.1"
   },
   "main": "./out/extension.js",
   "activationEvents": [],
@@ -41,24 +41,24 @@
   },
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^10.0.3",
-    "@types/node": "^20.12.7",
-    "@types/vscode": "^1.75.0",
-    "@typescript-eslint/eslint-plugin": "^7.7.1",
-    "@typescript-eslint/parser": "^7.7.1",
-    "@vscode/test-electron": "^2.3.9",
-    "eslint": "^8.57.0",
-    "glob": "^10.3.12",
-    "prettier": "^3.2.5",
-    "semantic-release": "^23.0.8",
-    "semantic-release-vsce": "^5.7.1",
-    "typedoc": "0.25.13",
-    "typescript": "^5.4.5",
+    "@semantic-release/github": "^11.0.1",
+    "@types/node": "^22.13.10",
+    "@types/vscode": "^1.98.0",
+    "@typescript-eslint/eslint-plugin": "^8.26.1",
+    "@typescript-eslint/parser": "^8.26.1",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.22.0",
+    "glob": "^11.0.1",
+    "prettier": "^3.5.3",
+    "semantic-release": "^24.2.3",
+    "semantic-release-vsce": "^6.0.6",
+    "typedoc": "0.27.9",
+    "typescript": "^5.8.2",
     "vsce": "^2.15.0"
   },
   "dependencies": {
     "core-lib": "workspace:*",
-    "winston": "^3.13.0"
+    "winston": "^3.17.0"
   },
   "badges": [
     {
