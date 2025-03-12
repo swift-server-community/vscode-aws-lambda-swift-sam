@@ -20,7 +20,11 @@ jobs:
           cache-dependency-path: "vscode-extension/package-lock.json"
 
       - name: Install dependencies
-        run: npm install
+        run: npm run install:all
 
-      - name: Run unit tests
-        run: npm run test:unit
+      - name: Build all
+        run: npm run build:all
+
+      # remove because these are not real unit tests, they requires AWS CLI, SAM, and docker to be installed
+      # - name: Run unit tests
+      #   run: npm run test:unit
