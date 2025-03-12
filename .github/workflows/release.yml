@@ -31,11 +31,12 @@ jobs:
       - name: Semantic Release
         run: npx semantic-release
         env:
+          VSCE_PAT: ${{ secrets.VSCE_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         working-directory: vscode-extension
 
-      # - name: Publish extension
-      #   run: npx vcse package && npx vcse publish
-      #   env:
-      #    VSCE_PAT: ${{ secrets.VSCE_TOKEN }}
-      #   working-directory: vscode-extension
+      - name: Publish extension
+        run: npx vcse package && npx vcse publish
+        env:
+         VSCE_PAT: ${{ secrets.VSCE_TOKEN }}
+        working-directory: vscode-extension
