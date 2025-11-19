@@ -41,24 +41,24 @@
   },
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.1",
-    "@types/node": "^22.13.10",
-    "@types/vscode": "^1.98.0",
-    "@typescript-eslint/eslint-plugin": "^8.26.1",
-    "@typescript-eslint/parser": "^8.26.1",
-    "@vscode/test-electron": "^2.4.1",
-    "eslint": "^9.22.0",
-    "glob": "^11.0.1",
-    "prettier": "^3.5.3",
-    "semantic-release": "^24.2.3",
-    "semantic-release-vsce": "^6.0.6",
-    "typedoc": "0.27.9",
-    "typescript": "^5.8.2",
+    "@semantic-release/github": "^12.0.2",
+    "@types/node": "^24.10.1",
+    "@types/vscode": "^1.106.1",
+    "@typescript-eslint/eslint-plugin": "^8.47.0",
+    "@typescript-eslint/parser": "^8.47.0",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.1",
+    "glob": "^12.0.0",
+    "prettier": "^3.6.2",
+    "semantic-release": "^25.0.2",
+    "semantic-release-vsce": "^6.0.14",
+    "typedoc": "0.28.14",
+    "typescript": "^5.9.3",
     "vsce": "^2.15.0"
   },
   "dependencies": {
     "core-lib": "workspace:*",
-    "winston": "^3.17.0"
+    "winston": "^3.18.3"
   },
   "badges": [
     {
